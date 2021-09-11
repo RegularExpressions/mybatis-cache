@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <!-- 引入数据源配置文件  -->
+  <properties resource="db.properties" />
+
+  <settings>
+    <setting name="cacheEnabled" value="false"/>
+    <setting name="lazyLoadingEnabled" value="true"/>
+    <setting name="mapUnderscoreToCamelCase" value="true"/>
+    <setting name="localCacheScope" value="SESSION"/>
+  </settings>
+  <typeAliases>
+    <package name="com.mybatis.cache.note.model"/>
+  </typeAliases>
+
+  <!-- 定义数据库环境，且默认使用development环境 -->
+  <environments default="development">
+    <!-- 定义id为development的数据库环境 -->
+    <environment id="development">
+      <!-- 采用jdbc事务管理 -->
+      <transactionManager type="JDBC"/>
+      <!-- 配置数据库连接信息 -->
+      <dataSource type="POOLED">
+        <property name="driver" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+
+  <mappers>
+    <mapper class="com.mybatis.cache.note.dao.BookMapper" />
+  </mappers>
+</configuration>
