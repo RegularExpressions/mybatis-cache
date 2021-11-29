@@ -28,7 +28,6 @@ public class Main {
       System.out.println(admin1);
       Book admin2 = bookMapper.getBookById(1);
       System.out.println(admin2);
-//      sqlSession.commit();
       System.out.println("查询实体是否相等："+ (admin1 == admin2));
 
     } catch (Exception e) {
@@ -78,8 +77,6 @@ public class Main {
    *    2.对应mapper使用@CacheNamespace注解开启，mapper.xml中使用<cache/>开启
    *    3.要缓存的实体类实现序列化接口
    *   工作机制：
-   *   1。一个会话，查询一条数据，这个数据就会被放在对应SqlSession的一级缓存中；
-   *   2.如果会话关闭，一级缓存的数据会被保存在二级缓存中；
    *
    *   和二级缓存有关的设置：
    *   cacheEnabled = true /false (开启关闭二级缓存)
